@@ -1,9 +1,10 @@
 import { useState, type ReactNode } from "react";
 import { CartContext } from "./CartContext";
 import type { Product } from "../data/products";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<Product[]>([]);
+  const [items, setItems] = useLocalStorage<Product[]>("cart", []);
 
   // TODO 1: Reiknið samtölu allra verða í körfunni.
   const total = items.reduce((sum, item) => sum + item.price, 0);
