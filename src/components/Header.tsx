@@ -1,8 +1,11 @@
+import { useCart } from "../hooks/useCart";
+
 export function Header() {
+  const { items } = useCart();
   return (
     <>
       <h1>Smábúðin</h1>
-      <span className="badge">Karfa</span>
+      <h2 className="badge">Karfa ({items.length})</h2>
     </>
   );
 }
